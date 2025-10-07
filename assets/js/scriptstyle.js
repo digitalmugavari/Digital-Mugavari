@@ -46,6 +46,29 @@ function resetWidget() {
   document.getElementById("toForm").disabled = true;
   document.getElementById("serviceOptions").innerHTML = "";
   document.getElementById("serviceHeader").textContent = "Select a service";
+  // ensure submit button(s) are visible again if they were hidden
+  try {
+    const $ = window.jQuery;
+    if ($) {
+      $("#gform button[type='submit'], #gform .continue-btn").show();
+      $("#submit-alert").text('').hide();
+      // clear hidden inputs if present
+      try { document.getElementById('selected_main').value = ''; } catch(e){}
+      try { document.getElementById('selected_service').value = ''; } catch(e){}
+    }
+  } catch (e) {}
+  // also ensure via plain DOM in case jQuery wasn't available when reset ran
+  try {
+    const els = document.querySelectorAll("#gform button[type='submit'], #gform .continue-btn");
+    els.forEach((el) => {
+      // only change display if it was hidden
+      try { el.style.display = ''; el.disabled = false; } catch (e) {}
+    });
+    const alertEl = document.getElementById('submit-alert');
+    if (alertEl) { alertEl.textContent = ''; alertEl.style.display = 'none'; }
+    try { const sm = document.getElementById('selected_main'); if (sm) sm.value = ''; } catch(e){}
+    try { const ss = document.getElementById('selected_service'); if (ss) ss.value = ''; } catch(e){}
+  } catch (e) {}
 }
 
 function outsideClickListener(event) {
@@ -95,6 +118,11 @@ mainOptions.forEach((btn) => {
       btn.textContent && btn.textContent.trim()
         ? btn.textContent.trim()
         : selectedMain;
+    // expose to window for other scripts (form submit) to read reliably
+    try {
+      window.selectedMain = selectedMain;
+      window.selectedMainLabel = selectedMainLabel;
+    } catch (e) {}
     // directly populate services and navigate to step3 when a main option is selected
     populateServiceOptions(selectedMain);
     goToStep("step3");
@@ -157,6 +185,10 @@ function populateServiceOptions(key) {
       btn.classList.add("active");
       document.getElementById("toForm").disabled = false;
       selectedServiceBtn = s;
+      // expose selected service for the form submit
+      try {
+        window.selectedServiceBtn = selectedServiceBtn;
+      } catch (e) {}
     });
 
     serviceDiv.appendChild(btn);
