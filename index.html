@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Digital Mugavari</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Character reveal for the work title (scoped to avoid affecting other elements) */
+        .work-title.char-reveal {
+            white-space: pre-wrap;
+            /* preserve line breaks and spacing */
+            display: inline-block;
+            /* allow per-character inline-block spans to animate */
+        }
+
+        .work-title.char-reveal span {
+            opacity: 0.18;
+            /* initial faded state */
+            display: inline-block;
+            will-change: opacity, color, transform;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- preloader -->
+    <div class="preloader-overlay">
+        <div class="final-message" id="finalMessage">
+            <div class="final-line first">It’s not just a business.</div>
+            <div class="final-line middle">Digital Mugavari</div>
+            <div class="final-line last">It’s your identity, your presence, your place.</div>
+        </div>
+    </div>
+    <!-- header section -->
+    <section class="bg-banner">
+        <header>
+            <div class="container-fluid d-flex align-items-center justify-content-between  section-navbar">
+                <div class="logo d-flex align-items-center">
+                    <img class="logo-img" src="assets/images/DM Web Logo.png" alt="Digital Mugavari Logo">
+                    <!-- <h6 class="logo-text ms-2 mb-0">DIGITAL MUGAVARI</h6> -->
+                </div>
+                <!-- <a href="#" class="connect-link">Connect With Us</a> -->
+            </div>
+        </header>
+
+        <!-- hero section -->
+        <section class="container hero-section mt-5 mb-5 pb-5">
+            <div class="hero-content">
+                <div class="tagline">Clicks. Leads. Conversions.</div>
+                <div>
+                    <h1 class="headline">
+                        From Strategy <br>
+                        to <span>SEO</span>, We’re Your <br>
+                        Brand’s Loudest Voice.</h1>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- <section class=" container digital-section mt-5 pt-5 mb-5 pb-5">
+        <h2 class="mb-5">
+            Empowering brands with a digital address, we’ve helped businesses grow through innovative strategies and
+            precise optimization.
+        </h2>
+        <div class="row">
+            <div class="col-md-6 border-bottom-line">
+                <div class="digital-item">
+                    <div class="digital-item-number">01</div>
+                    <div class="digital-item-text">SEO-Driven Website Development.</div>
+                </div>
+            </div>
+            <div class="col-md-6 border-bottom-line">
+                <div class="digital-item">
+                    <div class="digital-item-number">02</div>
+                    <div class="digital-item-text">Real-Time Performance Tracking.</div>
+                </div>
+            </div>
+            <div class="col-md-6 border-bottom-line">
+                <div class="digital-item">
+                    <div class="digital-item-number">03</div>
+                    <div class="digital-item-text">Data-Backed Keyword Research.</div>
+                </div>
+            </div>
+            <div class="col-md-6 border-bottom-line">
+                <div class="digital-item">
+                    <div class="digital-item-number">04</div>
+                    <div class="digital-item-text">Strategic Brand Positioning.</div>
+                </div>
+            </div>
+            <div class="col-md-6 border-bottom-line">
+                <div class="digital-item">
+                    <div class="digital-item-number">05</div>
+                    <div class="digital-item-text">Local Business Optimization.</div>
+                </div>
+            </div>
+            <div class="col-md-6 border-bottom-line">
+                <div class="digital-item">
+                    <div class="digital-item-number">06</div>
+                    <div class="digital-item-text">High-Converting Ad Campaigns.</div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- Service Section-->
+    <section class="container-fluid work-section ">
+        <div class="container work-content text-center">
+            <h2 class="work-title text-wrap char-reveal">
+                Your brand deserves more than recognition, it deserves real, lasting growth. At Digital Mugavari, we don’t just follow trends, we set them. Whether you’re building, scaling, or reinventing, we make your brand unstoppable.
+            </h2>
+            <br><br>
+            <br>
+            <div class="marquee-wrapper">
+                <div class="marquee-container">
+                    <div class="marquee-content">
+                        <span>For Ambitious Startups</span>
+                        <span>For Growing Brands</span>
+                        <span>For Established Leaders </span>
+                        <span>For Brands Ready to Rebuild</span>
+
+                        <!-- Duplicate for seamless effect -->
+                        <span>For Ambitious Startups</span>
+                        <span>For Growing Brands</span>
+                        <span>For Established Leaders </span>
+                        <span>For Brands Ready to Rebuild</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sticky Section-->
+    <!-- <section class="sticky" style="background:linear-gradient(#ececec,#c4c3c3);">
+        <div class="sticky__box">
+            <p> To put it simply, you can team up with our experts or even a full-scale crew on a short-term or
+                long-term basis to increase your online visibility, drive targeted traffic, and turn clicks into
+                loyal customers.
+            </p>
+            <div class="sticky__box-fill js-fill"></div>
+        </div>
+    </section> -->
+
+
+
+
+    <section class="svc" id="svc">
+        <div class="svc__wrap">
+            <div class="wheelBox">
+                <div class="wheel" id="wheel">
+                    <div class="ring">
+                        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                            <circle class="track" cx="50" cy="50" r="46" fill="none" stroke-width=".6" />
+                            <circle class="active" cx="50" cy="50" r="46" fill="none" stroke-width=".6"
+                                stroke-linecap="round" stroke-dasharray="360" stroke-dashoffset="0" />
+                        </svg>
+                    </div>
+                    <div class="badges" id="badges">
+                        <div class="badge" data-idx="0" style="--angle: -90deg"><span class="badge__content">01</span>
+                        </div>
+                        <div class="badge" data-idx="1" style="--angle: -30deg"><span class="badge__content">02</span>
+                        </div>
+                        <div class="badge" data-idx="2" style="--angle: 30deg"><span class="badge__content">03</span>
+                        </div>
+                        <div class="badge" data-idx="3" style="--angle: 90deg"><span class="badge__content">04</span>
+                        </div>
+                        <div class="badge" data-idx="4" style="--angle: 150deg"><span class="badge__content">05</span>
+                        </div>
+                        <div class="badge" data-idx="5" style="--angle: 210deg"><span class="badge__content">06</span>
+                        </div>
+                        <div class="badge badge--current" id="badgeFixed"><span class="badge__content">03</span></div>
+                    </div>
+                    <div class="center">
+                        <div class="icon" id="centerIcon">
+                            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
+                                <circle cx="28" cy="28" r="12" />
+                                <path d="M36 36l14 14" />
+                            </svg>
+                        </div>
+                        <h2 id="centerTitle"></h2>
+                        <p id="centerDesc"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="svcList" id="cards">
+                <article class="card" data-title="Website Development"
+                    data-desc="Responsive, modern websites tailored to your business needs." data-icon="web">
+                    <div class="ico">
+                        <img src="assets/images/icons8-website-100.png" alt="web">
+                    </div>
+                    <div>
+                        <h3>Website Development</h3>
+                        <p>create responsive, modern, and user‑friendly websites tailored to your brand.</p>
+                        <div class="chips"><span>WordPress</span><span>Ecommerce</span><span>UI/UX</span></div>
+                    </div>
+                    <div class="cardNum">01</div>
+                </article>
+
+                <article class="card" data-title="Digital Marketing"
+                    data-desc="End-to-end marke ng campaigns designed to amplify your brand presence online."
+                    data-icon="chart">
+                    <div class="ico">
+                        <img src="assets/images/icons8-web-marketing-100.png" alt="chart">
+                    </div>
+                    <div>
+                        <h3>Digital Marketing</h3>
+                        <p>End-to-end marke ng campaigns designed to amplify your brand presence online. </p>
+                        <div class="chips"><span>PPC campaigns</span><span>performance marketingl</span><span>content
+                                marketing</span></div>
+                    </div>
+                    <div class="cardNum">02</div>
+                </article>
+
+                <article class="card" data-title="SEO Optimization"
+                    data-desc="Smart strategies to boost rankings, a ract organic traffic, and improve discoverability."
+                    data-icon="phone">
+                    <div class="ico">
+                        <img src="assets/images/icons8-window-search-100.png" alt="phone">
+                    </div>
+                    <div>
+                        <h3>Search Engine Optimization</h3>
+                        <p>Smart strategies to boost rankings, a ract organic traffic, and improve discoverability.</p>
+                        <div class="chips"><span>on-page SEO</span><span>local SEO</span><span>off-page SEO</span></div>
+                    </div>
+                    <div class="cardNum">03</div>
+                </article>
+
+                <article class="card" data-title="Branding "
+                    data-desc="Building powerful brand iden es that spark recogni on, trust, and long-term impact."
+                    data-icon="brand">
+                    <div class="ico">
+                        <img src="assets/images/icons8-user-100.png" alt="seo">
+                    </div>
+                    <div>
+                        <h3>Branding </h3>
+                        <p>Building powerful brand iden es that spark recogni on, trust, and long-term impact. </p>
+                        <div class="chips"><span>brand identity</span><span>logo </span><span>brand awareness </span>
+                        </div>
+                    </div>
+                    <div class="cardNum">04</div>
+                </article>
+
+                <article class="card" data-title="Influencer Marketing"
+                    data-desc="Collaborating with trusted voices to expand reach, build trust, and drive engagement. "
+                    data-icon="seo">
+                    <div class="ico">
+                        <img src="assets/images/icons8-popular-woman-100.png" alt="seo">
+                    </div>
+                    <div>
+                        <h3>Influencer Marketing</h3>
+                        <p>Collaborating with trusted voices to expand reach, build trust, and drive engagement. </p>
+                        <div class="chips"><span>brand collaborations</span><span>social media influencer
+                                campaigns</span></div>
+                    </div>
+                    <div class="cardNum">05</div>
+                </article>
+
+                <article class="card" data-title="Graphic Design"
+                    data-desc="Creative designs that shape identities and make your brand unforgetable. "
+                    data-icon="ads">
+                    <div class="ico">
+                        <img src="assets/images/icons8-wacom-tablet-100.png" alt="ads">
+                    </div>
+                    <div>
+                        <h3>Graphic Design</h3>
+                        <p>Creative designs that shape identities and make your brand unforgetable. </p>
+                        <div class="chips"><span>Poster design</span><span>Banner design</span></div>
+                    </div>
+                    <div class="cardNum">06</div>
+                </article>
+
+                <div class="divide"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="widget-section">
+        <div class="widget-wrapper">
+            <div class="widget-toggle" id="toggleWidget" tabindex="0">
+                <span>Tell us about your needs</span>
+                <i class="bi bi-list"></i>
+            </div>
+
+            <div class="widget-box hide" id="widgetBox" role="dialog" aria-modal="true">
+                <!-- Step 2 -->
+                <div class="widget-step" id="step2">
+                    <h5>I need help with...</h5>
+                    <div id="mainOptions" class="mt-3">
+                        <button class="option-btn" data-value="seo">SEO to boost my website’s visibility</button>
+                        <button class="option-btn" data-value="web">Designing or redesigning my website</button>
+                        <button class="option-btn" data-value="smm">Managing my social media platforms</button>
+                        <button class="option-btn" data-value="pm">Running ads that drive real results</button>
+                        <button class="option-btn" data-value="graphic">Creating eye-catching graphics</button>
+                        <button class="option-btn" data-value="influencer">Influencer marketing for more reach</button>
+                        <button class="option-btn" data-value="branding">Building a strong brand identity</button>
+                        <button class="option-btn" data-value="dm">Planning and executing digital marketing
+                            campaigns</button>
+                    </div>
+                    <div class="nav-controls">
+                        <button class="circle-btn" onclick="closeWidget()" type="button">&#8592;</button>
+                        <button class="continue-btn" id="toService" disabled onclick="goToStep('step3')"
+                            type="button">Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="widget-step hide" id="step3">
+                    <h5 id="serviceHeader">Select a service</h5>
+                    <div id="serviceOptions" class="mt-3"></div>
+                    <div class="nav-controls">
+                        <button class="circle-btn" onclick="goToStep('step2')" type="button">&#8592;</button>
+                        <button class="continue-btn" id="toForm" disabled onclick="goToStep('step4')"
+                            type="button">Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="widget-step hide" id="step4">
+                    <h5 class="pb-5">Almost there! Tell us a bit about yourself to wrap it up.</h5>
+                    <form onsubmit="event.preventDefault(); alert('Submitted!');">
+                        <input type="text" class="form-control" placeholder="Name" required />
+                        <input type="email" class="form-control" placeholder="Email address" required />
+                        <input type="tel" class="form-control" placeholder="Phone number" required />
+                        <input type="text" class="form-control" placeholder="Tell us more (optional)" />
+                        <div class="nav-controls">
+                            <button class="circle-btn" onclick="goToStep('step3')" type="button">&#8592;</button>
+                            <button class="continue-btn" type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll wrapper to control when animation ends -->
+    <div class="scroll-wrapper">
+        <div class="stuck-grid">
+            <!-- Add your 19 images -->
+            <div class="grid-item"><img src="assets/images/img-1.png" alt="1" /></div>
+            <div class="grid-item"><img src="assets/images/img-2.png" alt="2" /></div>
+            <div class="grid-item"><img src="assets/images/img-3.png" alt="3" /></div>
+            <div class="grid-item"><img src="assets/images/img-4.png" alt="4" /></div>
+            <div class="grid-item"><img src="assets/images/Content Strategy.png" alt="5" /></div>
+            <div class="grid-item"><img src="assets/images/img-6.png" alt="6" /></div>
+            <div class="grid-item"><img src="assets/images/img-7.png" alt="7" /></div>
+            <div class="grid-item"><img src="assets/images/img-8.png" alt="8" /></div>
+            <div class="grid-item"><img src="assets/images/img-9.png" alt="9" /></div>
+            <div class="grid-item"><img src="assets/images/img-10.png" alt="10" /></div>
+            <div class="grid-item"><img src="assets/images/img-11.png" alt="11" /></div>
+            <div class="grid-item"><img src="assets/images/img-12.png" alt="12" /></div>
+        </div>
+    </div>
+
+    <section class="contact-section-main">
+        <div class=" contact-section">
+            <h1 class="contact-title">CONTACT</h1>
+            <div class="row" style="flex-direction: row;display: flex;gap: 4rem;justify-content: center;">
+                    <div class="col-md-3 contact-card">
+                        <div>
+                            <strong>Email us</strong><br>
+                            digitalmugavari@gmail.com
+                        </div>
+                        <span>↗</span>
+                    </div>
+
+                    <div class="col-md-3 contact-card">
+                        <div>
+                            <strong>Call us</strong><br>
+                           +91 88078 38134
+                        </div>
+                        <span>↗</span>
+                    </div>
+
+                    <div class="col-md-3 contact-card">
+                        <div>
+                            <strong>Our location</strong><br>
+                            Pondicherry, India
+                        </div>
+                        <span>↗</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <section class="magic-section">
+        <!-- Background Video -->
+        <video class="bg-video" autoplay muted playsinline loop preload="auto">
+            <source src="assets/video/black-bg.mp4" type="video/mp4" />
+        </video>
+
+
+        <!-- Overlay Text -->
+        <div class="magic-overlay">
+            <p class="pre-text">It's not just a name.</p>
+            <h1 class="magic-word">Mugavari</h1>
+            <p class="post-text">It’s your identity, your presence, your place.</p>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/scriptstyle.js"></script>
+    <script src="assets/js/bootstrap.js" crossorigin="anonymous"></script>
+    <script src="assets/js/popper.js" crossorigin="anonymous"></script>
+    <script src="assets/js/script.js" crossorigin="anonymous"></script>
+    <script src="assets/js/gsap.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        // Animation and scroll sync
+        gsap.registerPlugin(ScrollTrigger);
+
+        const wheel = document.getElementById('wheel');
+        const badges = [...document.querySelectorAll('.badge')].filter(b => b.id !== 'badgeFixed');
+        const fixed = document.getElementById('badgeFixed');
+        const cards = [...document.querySelectorAll('.card')];
+        const centerTitle = document.getElementById('centerTitle');
+        const centerDesc = document.getElementById('centerDesc');
+        const centerIcon = document.getElementById('centerIcon');
+
+        const state = { index: 0 };
+        // drive rotation purely via CSS var for simpler transform math
+
+        function setActive(i) {
+            state.index = i;
+            // update fixed overlay badge label and sequential order around the circle
+            const N = badges.length;
+            const getAngle = (el) => parseFloat(el.style.getPropertyValue('--angle') || getComputedStyle(el).getPropertyValue('--angle')) || 0;
+            const baseAngle = getAngle(badges[i]);
+            const normalize = (deg) => ((deg % 360) + 360) % 360;
+
+            const currentNumber = i + 1;
+            const fixedContent = fixed.querySelector('.badge__content');
+            if (fixedContent) fixedContent.textContent = String(currentNumber).padStart(2, '0');
+            badges.forEach((b) => {
+                const rel = normalize(getAngle(b) - baseAngle);
+                const step = Math.round(rel / 60) % N; // 0 at right, 1 below, 5 above
+                const label = ((i + step) % N) + 1;
+                const content = b.querySelector('.badge__content');
+                if (content) content.textContent = String(label).padStart(2, '0');
+                b.classList.toggle('is-hidden', step === 0);
+            });
+            // rotate so the selected badge sits at the right side (0deg)
+            const angleStr2 = badges[i].style.getPropertyValue('--angle') || getComputedStyle(badges[i]).getPropertyValue('--angle');
+            const baseAngle2 = parseFloat(angleStr2) || 0;
+            const rotationDeg = -baseAngle2;
+            gsap.to(wheel, { '--wheelRot': `${rotationDeg}deg`, duration: 1.4, ease: 'power2.out' });
+            // update center content from the associated card
+            const card = cards[i];
+            centerTitle.textContent = card.dataset.title;
+            centerDesc.textContent = card.dataset.desc;
+            // swap icon minimalistically
+            const icons = {
+                web: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><rect x="8" y="12" width="48" height="36" rx="6"/><path d="M12 28c9-10 31-10 40 0"/><path d="M32 48v6"/></svg>',
+                chart: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><rect x="8" y="34" width="10" height="14" rx="2"/><rect x="24" y="28" width="10" height="20" rx="2"/><rect x="40" y="20" width="10" height="28" rx="2"/><path d="M10 50h44"/></svg>',
+                phone: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><rect x="18" y="6" width="28" height="52" rx="6"/><circle cx="32" cy="52" r="2"/><path d="M24 18h16"/><path d="M24 26h16"/><path d="M24 34h12"/></svg>',
+                brand: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><circle cx="22" cy="26" r="10"/><path d="M10 50c4-8 12-12 22-12s18 4 22 12"/><path d="M44 14l10 10l-18 18"/></svg>',
+                seo: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><circle cx="28" cy="28" r="12"/><path d="M36 36l14 14"/><path d="M20 28h16"/></svg>',
+                ads: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><path d="M8 16h36v22H8z"/><path d="M44 27l12 6-12 6z"/><path d="M16 48h20"/></svg>'
+            };
+            centerIcon.innerHTML = icons[card.dataset.icon] || icons.web;
+        }
+
+        // animate cards in and bind triggers
+        cards.forEach((card, i) => {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    end: '+=200',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: 'power2.out'
+            });
+
+            ScrollTrigger.create({
+                trigger: card,
+                start: 'top center',
+                end: 'bottom center',
+                onEnter: () => setActive(i),
+                onEnterBack: () => setActive(i)
+            });
+        });
+        // initial
+        setActive(0);
+    </script>
+    <script>
+        // Character-by-character reveal for the service work title
+        (function () {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+            const el = document.querySelector('.work-title.char-reveal');
+            if (!el) return;
+
+            // preserve original text and split into characters, keeping whitespace
+            const text = el.textContent.trim();
+            el.textContent = '';
+
+            const chars = Array.from(text);
+            chars.forEach(ch => {
+                const span = document.createElement('span');
+                span.textContent = ch === ' ' ? '\u00A0' : ch;
+                el.appendChild(span);
+            });
+
+            // animate: fade up the characters as the section scrolls into view
+            gsap.registerPlugin(ScrollTrigger);
+            // smoother character reveal: animate from a small y-offset + faded opacity to final state
+            gsap.fromTo('.work-title.char-reveal span',
+                { opacity: 0.18, y: 12 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    color: '#dcdcdc',
+                    stagger: { each: 0.03, from: 'start' },
+                    duration: 0.6,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: '.work-section',
+                        start: 'top 55%',
+                        end: 'bottom 80%',
+                        // use a numeric scrub for smoothing (0.5-0.8 gives a soft catch-up feel)
+                        scrub: 0.6,
+                        // Do NOT pin — keeps layout and other scripts the same
+                    }
+                }
+            );
+        })();
+    </script>
+</body>
+
+</html>
