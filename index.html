@@ -11,9 +11,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+    
+    <!-- Ajax script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         /* Character reveal for the work title (scoped to avoid affecting other elements) */
         .work-title.char-reveal {
@@ -326,15 +327,19 @@
                 <!-- Step 4 -->
                 <div class="widget-step hide" id="step4">
                     <h5 class="pb-5">Almost there! Tell us a bit about yourself to wrap it up.</h5>
-                    <form onsubmit="event.preventDefault(); alert('Submitted!');">
-                        <input type="text" class="form-control" placeholder="Name" required />
-                        <input type="email" class="form-control" placeholder="Email address" required />
-                        <input type="tel" class="form-control" placeholder="Phone number" required />
-                        <input type="text" class="form-control" placeholder="Tell us more (optional)" />
+                    <!-- Form: hidden fields will be populated before submit with widget selections -->
+                    <form id="gform">
+                        <input type="hidden" id="selected_main" name="selected_main" value="" />
+                        <input type="hidden" id="selected_service" name="selected_service" value="" />
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required />
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email address" required />
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone number" required />
+                        <input type="text" class="form-control" id="message" name="message" placeholder="Tell us more (optional)" />
                         <div class="nav-controls">
                             <button class="circle-btn" onclick="goToStep('step3')" type="button">&#8592;</button>
                             <button class="continue-btn" type="submit">Send</button>
-                        </div>
+                            <p id="submit-alert" class="text-center"></p>
+                        </div >
                     </form>
                 </div>
             </div>
@@ -410,6 +415,72 @@
         </div>
     </section>
 
+    <script>
+    $("#gform").submit((e) => {
+        e.preventDefault();
+
+        // Populate hidden fields with the widget selections (exposed by scriptstyle.js)
+        try {
+            const mainVal = window.selectedMainLabel || window.selectedMain || "";
+            const serviceVal = window.selectedServiceBtn || "";
+            document.getElementById("selected_main").value = mainVal;
+            document.getElementById("selected_service").value = serviceVal;
+        } catch (err) {
+            // ignore if fields not present
+        }
+
+        // Hide the submit button(s) and show only the alert while request is running
+        const $submitBtns = $("#gform button[type='submit'], #gform .continue-btn");
+        $submitBtns.hide();
+        $("#submit-alert").html("Submitting...<br>Please wait").css({ "display": "contents", "color": "#E42320", "font-weight": "900" });
+
+        // serialize the form after hidden fields are set
+        const payload = $("#gform").serialize();
+
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbwKVFdMuPJbrM09z28_Yf-owxRewvlBYyo-LHO1QqS-41bG3cwFvm9tkJOty52Io3fbNQ/exec",
+            data: payload,
+            method: "post",
+            success: function(response) {
+                // show success alert, keep buttons hidden
+                $("#submit-alert").text("Form Submitted Successfully!!").css({ "display": "contents", "color": "#50b948", "font-weight": "900" });
+
+                // Fade out the widget modal after a short delay so user sees the confirmation
+                setTimeout(function() {
+                    try {
+                        // gracefully fade out the widget box
+                        $("#widgetBox").fadeOut(600, function() {
+                            try { if (typeof closeWidget === 'function') closeWidget(); } catch(e){}
+                            $(this).addClass('hide').removeClass('show').show(); // keep it hidden by class but restore display for future opens
+                        });
+                    } catch(e) {
+                        try { if (typeof closeWidget === 'function') closeWidget(); } catch(e){}
+                    }
+                }, 1200);
+
+                // clear selections and form, then fade out the submit alert
+                setTimeout(function() {
+                    $("#gform").trigger("reset");
+                    // clear stored selections
+                    try { if (window.selectedMain) delete window.selectedMain; if (window.selectedMainLabel) delete window.selectedMainLabel; if (window.selectedServiceBtn) delete window.selectedServiceBtn; } catch(e){}
+                    try { if (typeof resetWidget === 'function') resetWidget(); } catch(e){}
+
+                    // fade out the submit alert after user has seen success
+                    setTimeout(function() {
+                        $("#submit-alert").fadeOut(800, function() { $(this).text('').show(); });
+                    }, 800);
+                }, 1600);
+            },
+            error: function(err) {
+                // On error, show error alert and re-show the submit button(s)
+                $("#submit-alert").text("Something Went Wrong!.. Check filled details and try again or contact us by WhatsApp/phone.")
+                    .css({ "display": "contents", "color": "red", "font-weight": "900" });
+                $submitBtns.show();
+            }
+        });
+    });
+        
+</script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
