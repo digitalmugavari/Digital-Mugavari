@@ -1695,27 +1695,31 @@ body {
 }
 
 .buttons {
-  position: fixed;
+  /* position: fixed; */
   left: 50%;
-  transform: translateX(-50%);
-  bottom: 10px;
+  /* transform: translateX(-50%); */
+  /* bottom: 10px; */
+   color: rgba(255, 255, 255, 0.752) !important;
 }
 
 .dots {
-  position: fixed;
+  /* position: fixed; */
   left: 50%;
-  transform: translateX(-50%);
-  bottom: 10px;
+  /* transform: translateX(-50%); */
+  /* bottom: 10px; */
   display: flex;
+  justify-content: center;
   gap: 8px;
   z-index: 50;
+  background: #000000;
+  align-items: center;
 }
 .dots button {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   border: none;
-  background: #000000;
+  /* background: #000000; */
   padding: 0;
   cursor: pointer;
 }
