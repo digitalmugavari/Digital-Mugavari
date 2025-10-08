@@ -311,3 +311,125 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// wheeel scroll
+ // Animation and scroll sync
+        gsap.registerPlugin(ScrollTrigger);
+
+        const wheel = document.getElementById('wheel');
+        const badges = [...document.querySelectorAll('.badge')].filter(b => b.id !== 'badgeFixed');
+        const fixed = document.getElementById('badgeFixed');
+        const cards = [...document.querySelectorAll('.card')];
+        const centerTitle = document.getElementById('centerTitle');
+        const centerDesc = document.getElementById('centerDesc');
+        const centerIcon = document.getElementById('centerIcon');
+
+        const state = { index: 0 };
+        // drive rotation purely via CSS var for simpler transform math
+
+        function setActive(i) {
+            state.index = i;
+            // update fixed overlay badge label and sequential order around the circle
+            const N = badges.length;
+            const getAngle = (el) => parseFloat(el.style.getPropertyValue('--angle') || getComputedStyle(el).getPropertyValue('--angle')) || 0;
+            const baseAngle = getAngle(badges[i]);
+            const normalize = (deg) => ((deg % 360) + 360) % 360;
+
+            const currentNumber = i + 1;
+            const fixedContent = fixed.querySelector('.badge__content');
+            if (fixedContent) fixedContent.textContent = String(currentNumber).padStart(2, '0');
+            badges.forEach((b) => {
+                const rel = normalize(getAngle(b) - baseAngle);
+                const step = Math.round(rel / 60) % N; // 0 at right, 1 below, 5 above
+                const label = ((i + step) % N) + 1;
+                const content = b.querySelector('.badge__content');
+                if (content) content.textContent = String(label).padStart(2, '0');
+                b.classList.toggle('is-hidden', step === 0);
+            });
+            // rotate so the selected badge sits at the right side (0deg)
+            const angleStr2 = badges[i].style.getPropertyValue('--angle') || getComputedStyle(badges[i]).getPropertyValue('--angle');
+            const baseAngle2 = parseFloat(angleStr2) || 0;
+            const rotationDeg = -baseAngle2;
+            gsap.to(wheel, { '--wheelRot': `${rotationDeg}deg`, duration: 1.4, ease: 'power2.out' });
+            // update center content from the associated card
+            const card = cards[i];
+            centerTitle.textContent = card.dataset.title;
+            centerDesc.textContent = card.dataset.desc;
+            // swap icon minimalistically
+            const icons = {
+                web: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><rect x="8" y="12" width="48" height="36" rx="6"/><path d="M12 28c9-10 31-10 40 0"/><path d="M32 48v6"/></svg>',
+                chart: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><rect x="8" y="34" width="10" height="14" rx="2"/><rect x="24" y="28" width="10" height="20" rx="2"/><rect x="40" y="20" width="10" height="28" rx="2"/><path d="M10 50h44"/></svg>',
+                phone: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><rect x="18" y="6" width="28" height="52" rx="6"/><circle cx="32" cy="52" r="2"/><path d="M24 18h16"/><path d="M24 26h16"/><path d="M24 34h12"/></svg>',
+                brand: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><circle cx="22" cy="26" r="10"/><path d="M10 50c4-8 12-12 22-12s18 4 22 12"/><path d="M44 14l10 10l-18 18"/></svg>',
+                seo: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><circle cx="28" cy="28" r="12"/><path d="M36 36l14 14"/><path d="M20 28h16"/></svg>',
+                ads: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><path d="M8 16h36v22H8z"/><path d="M44 27l12 6-12 6z"/><path d="M16 48h20"/></svg>'
+            };
+            centerIcon.innerHTML = icons[card.dataset.icon] || icons.web;
+        }
+
+        // animate cards in and bind triggers
+        cards.forEach((card, i) => {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    end: '+=200',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: 'power2.out'
+            });
+
+            ScrollTrigger.create({
+                trigger: card,
+                start: 'top center',
+                end: 'bottom center',
+                onEnter: () => setActive(i),
+                onEnterBack: () => setActive(i)
+            });
+        });
+        // initial
+        setActive(0);
+    
+        // Character-by-character reveal for the service work title
+        (function () {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+            const el = document.querySelector('.work-title.char-reveal');
+            if (!el) return;
+
+            // preserve original text and split into characters, keeping whitespace
+            const text = el.textContent.trim();
+            el.textContent = '';
+
+            const chars = Array.from(text);
+            chars.forEach(ch => {
+                const span = document.createElement('span');
+                span.textContent = ch === ' ' ? '\u00A0' : ch;
+                el.appendChild(span);
+            });
+
+            // animate: fade up the characters as the section scrolls into view
+            gsap.registerPlugin(ScrollTrigger);
+            // smoother character reveal: animate from a small y-offset + faded opacity to final state
+            gsap.fromTo('.work-title.char-reveal span',
+                { opacity: 0.18, y: 12 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    color: '#dcdcdc',
+                    stagger: { each: 0.03, from: 'start' },
+                    duration: 0.6,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: '.work-section',
+                        start: 'top 55%',
+                        end: 'bottom 80%',
+                        // use a numeric scrub for smoothing (0.5-0.8 gives a soft catch-up feel)
+                        scrub: 0.6,
+                        // Do NOT pin — keeps layout and other scripts the same
+                    }
+                }
+            );
+        })();

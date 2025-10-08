@@ -433,48 +433,7 @@ html {
   }
 }
 
-.digital-section {
-  padding: 10px;
-  background-color: #fff;
-
-}
-
-.digital-section h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  max-width: 1200px;
-}
-
-.digital-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-  margin-top: 10px;
-}
-
-.digital-item-number {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #a1a1a1;
-  width: 50px;
-  padding-right: 1.5rem;
-}
-
-.digital-item-text {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #ffffff9f;
-}
-
-.border-bottom-line {
-  border-bottom: 2px solid #eee;
-}
-
-@media (max-width: 767px) {
-  .digital-item {
-    margin-bottom: 30px;
-  }
-}
+/* .digital-section styles removed because section deleted from HTML */
 
 
 
@@ -1633,3 +1592,18 @@ body {
     font-size: .8rem;
   }
 }
+
+
+ .work-title.char-reveal {
+            white-space: pre-wrap;
+            /* preserve line breaks and spacing */
+            display: inline-block;
+            /* allow per-character inline-block spans to animate */
+        }
+
+        .work-title.char-reveal span {
+            opacity: 0.18;
+            /* initial faded state */
+            display: inline-block;
+            will-change: opacity, color, transform;
+        }
