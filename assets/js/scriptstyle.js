@@ -248,6 +248,47 @@ window.addEventListener("scroll", () => {
     // if there's no hero section, show glow by default
     toggleEl.classList.add("glow");
   }
+
+  // One-time "first scroll" glow: show glow briefly when the user first scrolls.
+  // Adds glow immediately on first scroll, keeps it for a short duration, then
+  // re-evaluates hero visibility so the observer can decide the final state.
+  let firstScrolled = false;
+
+  function getHeroVisibleRatio() {
+    if (!hero) return 0;
+    const rect = hero.getBoundingClientRect();
+    if (!rect || rect.height <= 0) return 0;
+    const visibleHeight = Math.max(
+      0,
+      Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
+    );
+    return visibleHeight / rect.height;
+  }
+
+  function onFirstScroll() {
+    if (firstScrolled) return;
+    firstScrolled = true;
+    // force glow on first scroll
+    toggleEl.classList.add("glow");
+    // after a short delay, let the Observer/visibility determine the final state
+    setTimeout(() => {
+      if (getHeroVisibleRatio() > 0.5) {
+        toggleEl.classList.remove("glow");
+      }
+      // otherwise keep the glow; the IntersectionObserver will update later as needed
+    }, 1500);
+  }
+
+  try {
+    window.addEventListener("scroll", onFirstScroll, { passive: true, once: true });
+  } catch (e) {
+    // fallback for older browsers that don't support the options object
+    const wrapper = function () {
+      onFirstScroll();
+      window.removeEventListener("scroll", wrapper);
+    };
+    window.addEventListener("scroll", wrapper);
+  }
 })();
 
 document.addEventListener("DOMContentLoaded", function () {

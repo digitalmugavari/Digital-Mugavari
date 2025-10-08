@@ -63,17 +63,17 @@ html {
     }
 
     .final-line.first {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: 400;
     }
 
     .final-line.middle {
-      font-size: 3rem;
+      font-size: 4rem;
       font-weight: 700;
     }
 
     .final-line.last {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 400;
       color: #ccc;
     }
@@ -291,7 +291,7 @@ html {
     }
 
     .form-control::placeholder {
-      color: #888;
+      color: #000000;
     }
 
     .hide {
@@ -345,7 +345,7 @@ html {
     /* border-radius: 25px; */
     /* padding: 2rem; */
     /* margin-bottom: 2rem; */
-    padding-top: 4rem;
+    padding-top: 1rem;
 }
 
 .work-content {
@@ -358,7 +358,7 @@ html {
 
 .work-title {
     /* font-family: "Poppins", sans-serif; */
-    font-size: 2.9rem;
+    font-size: 2.2rem;
     font-weight: 700;
     text-align: justify;
     margin-bottom: 1.5rem;
