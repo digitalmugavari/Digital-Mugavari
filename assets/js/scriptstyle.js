@@ -433,3 +433,139 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             );
         })();
+
+
+
+
+        function moveToSelected(element) {
+      var $items = $('#image-carousel').children();
+      var total = $items.length;
+      var selectedIdx = $items.index($('.selected'));
+      var newIdx;
+
+      if (element === "next") {
+        newIdx = (selectedIdx + 1) % total;
+      } else if (element === "prev") {
+        newIdx = (selectedIdx - 1 + total) % total;
+      } else if (typeof element === 'number') {
+        newIdx = element % total;
+      } else if (element instanceof jQuery) {
+        newIdx = $items.index(element);
+      } else {
+        newIdx = $items.index(element);
+      }
+
+      // Calculate indices for prev, next, prevLeftSecond, nextRightSecond
+      var prevIdx = (newIdx - 1 + total) % total;
+      var nextIdx = (newIdx + 1) % total;
+      var prevLeftSecondIdx = (newIdx - 2 + total) % total;
+      var nextRightSecondIdx = (newIdx + 2) % total;
+
+      // Reset all to hideRight
+      $items.removeClass().addClass('hideRight');
+
+      // Always show 5 images: prevLeftSecond, prev, selected, next, nextRightSecond
+      $items.eq(prevLeftSecondIdx).removeClass().addClass('prevLeftSecond');
+      $items.eq(prevIdx).removeClass().addClass('prev');
+      $items.eq(newIdx).removeClass().addClass('selected');
+      $items.eq(nextIdx).removeClass().addClass('next');
+      $items.eq(nextRightSecondIdx).removeClass().addClass('nextRightSecond');
+
+      // All others are hidden (hideLeft for those before prevLeftSecond, hideRight for those after nextRightSecond)
+      for (var i = 0; i < total; i++) {
+        // Calculate relative position to newIdx, wrapping around
+        var rel = (i - newIdx + total) % total;
+        if (rel > 2 && rel < total - 2) {
+          // If more than 2 ahead or behind, hide
+          if (rel < total / 2) {
+            $items.eq(i).removeClass().addClass('hideRight');
+          } else {
+            $items.eq(i).removeClass().addClass('hideLeft');
+          }
+        }
+      }
+
+      // update dots to reflect currently selected index
+      updateActiveDot(newIdx);
+    }
+
+// --- autoplay (endless) with pause-on-hover ---
+var autoInterval = null;
+var autoPlayDelay = 1500; // milliseconds
+
+function startAuto() {
+  stopAuto();
+  autoInterval = setInterval(function() { moveToSelected('next'); }, autoPlayDelay);
+}
+
+function stopAuto() {
+  if (autoInterval) {
+    clearInterval(autoInterval);
+    autoInterval = null;
+  }
+}
+
+$(function() {
+  // start autoplay and ensure correct classes on load
+  startAuto();
+  // re-run moveToSelected with current selected to normalize classes
+  moveToSelected($('.selected'));
+});
+
+// pause on hover, resume on leave
+$('#image-carousel').hover(function() {
+  stopAuto();
+}, function() {
+  startAuto();
+});
+
+// --- dot indicators (replace Prev/Next) ---
+function createDots() {
+  var $dots = $('#dots');
+  $dots.empty();
+  $('#image-carousel').children().each(function(i) {
+    var $btn = $('<button/>').attr('data-index', i);
+    if ($(this).hasClass('selected')) $btn.addClass('active');
+    $btn.on('click', function() {
+      var index = parseInt($(this).attr('data-index'));
+      var target = $('#image-carousel').children().eq(index);
+      moveToSelected(target);
+      // reset autoplay so user sees full delay after manual change
+      startAuto();
+      updateActiveDot(index);
+    });
+    $dots.append($btn);
+  });
+}
+
+function updateActiveDot(activeIndex) {
+  $('#dots').children().removeClass('active');
+  $('#dots').children().eq(activeIndex).addClass('active');
+}
+
+// create dots on load and whenever we normalize classes
+$(function() {
+  createDots();
+});
+
+// keyboard events
+$(document).keydown(function(e) {
+    switch(e.which) {
+        case 37: // left
+        moveToSelected('prev');
+        break;
+
+        case 39: // right
+        moveToSelected('next');
+        break;
+
+        default: return;
+    }
+    e.preventDefault();
+});
+
+$('#image-carousel div').click(function() {
+  moveToSelected($(this));
+});
+
+// Prev/Next buttons removed — navigation available via dots, keyboard and clicking slides

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    html, body, main {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#carousel {
+  position: relative;
+  height: 400px;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: hidden;
+}
+#carousel div {
+  position: absolute;
+  transition: transform 1s, left 1s, opacity 1s, z-index 0s;
+  opacity: 1;
+}
+#carousel div img {
+  width: 400px;
+  transition: width 1s;
+}
+#carousel div.hideLeft {
+  left: 0%;
+  opacity: 0;
+  transform: translateY(50%) translateX(-50%);
+}
+#carousel div.hideLeft img {
+  width: 200px;
+}
+#carousel div.hideRight {
+  left: 100%;
+  opacity: 0;
+  transform: translateY(50%) translateX(-50%);
+}
+#carousel div.hideRight img {
+  width: 200px;
+}
+#carousel div.prev {
+  z-index: 5;
+  left: 30%;
+  transform: translateY(50px) translateX(-50%);
+}
+#carousel div.prev img {
+  width: 300px;
+}
+#carousel div.prevLeftSecond {
+  z-index: 4;
+  left: 15%;
+  transform: translateY(50%) translateX(-50%);
+  opacity: 0.7;
+}
+#carousel div.prevLeftSecond img {
+  width: 200px;
+}
+#carousel div.selected {
+  z-index: 10;
+  left: 50%;
+  transform: translateY(0px) translateX(-50%);
+}
+#carousel div.next {
+  z-index: 5;
+  left: 70%;
+  transform: translateY(50px) translateX(-50%);
+}
+#carousel div.next img {
+  width: 300px;
+}
+#carousel div.nextRightSecond {
+  z-index: 4;
+  left: 85%;
+  transform: translateY(50%) translateX(-50%);
+  opacity: 0.7;
+}
+#carousel div.nextRightSecond img {
+  width: 200px;
+}
+
+.buttons {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+}
+
+.dots {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 50;
+}
+.dots button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+  padding: 0;
+  cursor: pointer;
+}
+.dots button.active {
+  background: #333;
+}
+</style>
+<body>
+    
+  <main>
+
+    <div id="carousel">
+
+      <div class="hideLeft">
+        <img src="assets/images/img-1.png" alt="1">
+      </div>
+
+      <div class="prevLeftSecond">
+        <img src="assets/images/img-2.png" alt="2">
+      </div>
+
+      <div class="prev">
+        <img src="assets/images/img-3.png" alt="3">
+      </div>
+
+      <div class="selected">
+        <img src="assets/images/img-4.png" alt="4">
+      </div>
+
+      <div class="next">
+        <img src="assets/images/img-5.png" alt="5">
+      </div>
+
+      <div class="nextRightSecond">
+        <img src="assets/images/img-6.png" alt="6">
+      </div>
+
+      <div class="hideRight">
+        <img src="assets/images/img-7.png" alt="7">
+      </div>
+
+      <div class="hideRight">
+        <img src="assets/images/img-8.png" alt="8">
+      </div>
+
+      <div class="hideRight">
+        <img src="assets/images/img-9.png" alt="9">
+      </div>
+
+      <div class="hideRight">
+        <img src="assets/images/img-10.png" alt="10">
+      </div>
+
+      <div class="hideRight">
+        <img src="assets/images/img-11.png" alt="11">
+      </div>
+
+      <div class="hideRight">
+        <img src="assets/images/img-12.png" alt="12">
+      </div>
+
+    </div>
+
+    <div class="dots" id="dots"></div>
+
+  </main>
+
+  <script>
+
+    function moveToSelected(element) {
+      var $items = $('#carousel').children();
+      var total = $items.length;
+      var selectedIdx = $items.index($('.selected'));
+      var newIdx;
+
+      if (element === "next") {
+        newIdx = (selectedIdx + 1) % total;
+      } else if (element === "prev") {
+        newIdx = (selectedIdx - 1 + total) % total;
+      } else if (typeof element === 'number') {
+        newIdx = element % total;
+      } else if (element instanceof jQuery) {
+        newIdx = $items.index(element);
+      } else {
+        newIdx = $items.index(element);
+      }
+
+      // Calculate indices for prev, next, prevLeftSecond, nextRightSecond
+      var prevIdx = (newIdx - 1 + total) % total;
+      var nextIdx = (newIdx + 1) % total;
+      var prevLeftSecondIdx = (newIdx - 2 + total) % total;
+      var nextRightSecondIdx = (newIdx + 2) % total;
+
+      // Reset all to hideRight
+      $items.removeClass().addClass('hideRight');
+
+      // Always show 5 images: prevLeftSecond, prev, selected, next, nextRightSecond
+      $items.eq(prevLeftSecondIdx).removeClass().addClass('prevLeftSecond');
+      $items.eq(prevIdx).removeClass().addClass('prev');
+      $items.eq(newIdx).removeClass().addClass('selected');
+      $items.eq(nextIdx).removeClass().addClass('next');
+      $items.eq(nextRightSecondIdx).removeClass().addClass('nextRightSecond');
+
+      // All others are hidden (hideLeft for those before prevLeftSecond, hideRight for those after nextRightSecond)
+      for (var i = 0; i < total; i++) {
+        // Calculate relative position to newIdx, wrapping around
+        var rel = (i - newIdx + total) % total;
+        if (rel > 2 && rel < total - 2) {
+          // If more than 2 ahead or behind, hide
+          if (rel < total / 2) {
+            $items.eq(i).removeClass().addClass('hideRight');
+          } else {
+            $items.eq(i).removeClass().addClass('hideLeft');
+          }
+        }
+      }
+
+      // update dots to reflect currently selected index
+      updateActiveDot(newIdx);
+    }
+
+// --- autoplay (endless) with pause-on-hover ---
+var autoInterval = null;
+var autoPlayDelay = 1500; // milliseconds
+
+function startAuto() {
+  stopAuto();
+  autoInterval = setInterval(function() { moveToSelected('next'); }, autoPlayDelay);
+}
+
+function stopAuto() {
+  if (autoInterval) {
+    clearInterval(autoInterval);
+    autoInterval = null;
+  }
+}
+
+$(function() {
+  // start autoplay and ensure correct classes on load
+  startAuto();
+  // re-run moveToSelected with current selected to normalize classes
+  moveToSelected($('.selected'));
+});
+
+// pause on hover, resume on leave
+$('#carousel').hover(function() {
+  stopAuto();
+}, function() {
+  startAuto();
+});
+
+// --- dot indicators (replace Prev/Next) ---
+function createDots() {
+  var $dots = $('#dots');
+  $dots.empty();
+  $('#carousel').children().each(function(i) {
+    var $btn = $('<button/>').attr('data-index', i);
+    if ($(this).hasClass('selected')) $btn.addClass('active');
+    $btn.on('click', function() {
+      var index = parseInt($(this).attr('data-index'));
+      var target = $('#carousel').children().eq(index);
+      moveToSelected(target);
+      // reset autoplay so user sees full delay after manual change
+      startAuto();
+      updateActiveDot(index);
+    });
+    $dots.append($btn);
+  });
+}
+
+function updateActiveDot(activeIndex) {
+  $('#dots').children().removeClass('active');
+  $('#dots').children().eq(activeIndex).addClass('active');
+}
+
+// create dots on load and whenever we normalize classes
+$(function() {
+  createDots();
+});
+
+// keyboard events
+$(document).keydown(function(e) {
+    switch(e.which) {
+        case 37: // left
+        moveToSelected('prev');
+        break;
+
+        case 39: // right
+        moveToSelected('next');
+        break;
+
+        default: return;
+    }
+    e.preventDefault();
+});
+
+$('#carousel div').click(function() {
+  moveToSelected($(this));
+});
+
+// Prev/Next buttons removed — navigation available via dots, keyboard and clicking slides
+
+  </script>
+</body>
+</html>
