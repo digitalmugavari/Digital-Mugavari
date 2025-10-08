@@ -319,10 +319,10 @@ html {
 }
 
 @media (max-width: 468px) {
-  .bg-banner {
+  /* .bg-banner {
     background: url('../images/Mobile\ Banner.png') ;
 
-  }
+  } */
   .section-navbar {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -335,7 +335,7 @@ html {
 
 @media (max-width: 768px) {
   .bg-banner {
-    background: url('../images/Tab\ Banner.png') no-repeat center center/cover;
+    background: url('../images/Tab002.png') no-repeat center center/cover;
   }
   .section-navbar {
   padding-left: 2rem;

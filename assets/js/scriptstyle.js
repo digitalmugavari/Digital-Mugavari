@@ -491,7 +491,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // --- autoplay (endless) with pause-on-hover ---
 var autoInterval = null;
-var autoPlayDelay = 1500; // milliseconds
+var autoPlayDelay = 1200; // milliseconds
 
 function startAuto() {
   stopAuto();
