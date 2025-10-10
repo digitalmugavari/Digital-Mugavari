@@ -120,6 +120,10 @@ html {
 .connect-link:hover {
   color: var(--primary-color);
 }
+.header-icons i{
+  font-size: 1.2rem;
+  color: rgb(98, 98, 98);
+}
 
 /* hero section */
 .bg-banner {
@@ -320,15 +324,23 @@ html {
 
 @media (max-width: 468px) {
   /* .bg-banner {
-    background: url('../images/Mobile\ Banner.png') ;
+    height: 150vh;
 
   } */
   .section-navbar {
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: 2rem;
 }
 .logo-img {
   width: 4rem !important;
+}
+.hero-section{
+  align-items: end;
+  padding-left: 2rem !important;
+}
+.header-icons i{
+  font-size: 1rem;
 }
 
 }
@@ -336,6 +348,7 @@ html {
 @media (max-width: 768px) {
   .bg-banner {
     background: url('../images/Tab002.png') no-repeat center center/cover;
+    
   }
   .section-navbar {
   padding-left: 2rem;
@@ -529,7 +542,7 @@ html {
 
 @media (max-width: 383px) {
   .headline {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 }
 
@@ -1564,9 +1577,9 @@ body {
     height: 40vh;
   }
 
-  .bg-banner {
+  /* .bg-banner {
     height: 70vh;
-  }
+  } */
 
   .card .cardNum {
     font-size: 6rem;
