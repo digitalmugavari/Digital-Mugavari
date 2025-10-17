@@ -347,7 +347,7 @@ html {
 
 @media (max-width: 768px) {
   .bg-banner {
-    background: url('../images/Tab002.png') no-repeat center center/cover;
+    background: url('../images/Tab-Banner.png') no-repeat center center/cover;
     
   }
   .section-navbar {
@@ -542,7 +542,8 @@ html {
 
 @media (max-width: 383px) {
   .headline {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
   }
 }
 
