@@ -294,7 +294,7 @@ html {
   margin-bottom: 1.5rem;
   width: 100%;
   padding: 0.75rem;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .form-control::placeholder {
@@ -1961,7 +1961,7 @@ body {
   backdrop-filter: blur(10px);
   color: #000000;
   border-radius: 24px;
-  padding: 2rem;
+  padding: 1rem;
   z-index: 9998;
   transform: scale(0);
   transform-origin: bottom center;
@@ -1979,7 +1979,9 @@ body {
 
 .widget-box-2 h5 {
   font-weight: 100;
-  font-size: 1.7rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 .option-btn-2 {
