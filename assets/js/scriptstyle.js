@@ -2,6 +2,8 @@ const toggle = document.getElementById("toggleWidget");
 const box = document.getElementById("widgetBox");
 const steps = document.querySelectorAll(".widget-step");
 const wrapper = document.querySelector(".widget-wrapper");
+// also support renamed '-2' wrapper used for WhatsApp overlay variant
+const wrapper2 = document.querySelector(".widget-wrapper-2");
 
 let selectedMain = null;
 let selectedMainLabel = null;
@@ -19,6 +21,7 @@ function openWidget() {
   box.classList.remove("hide");
   box.classList.add("show");
   wrapper.classList.add("expand");
+  if (wrapper2) wrapper2.classList.add('expand-2');
   resetWidget();
   goToStep("step2");
   document.addEventListener("click", outsideClickListener);
@@ -29,6 +32,7 @@ function closeWidget() {
   setTimeout(() => {
     box.classList.add("hide");
     wrapper.classList.remove("expand");
+    if (wrapper2) wrapper2.classList.remove('expand-2');
   }, 300);
   resetWidget();
   document.removeEventListener("click", outsideClickListener);

@@ -1739,3 +1739,355 @@ body {
 .dots button.active {
   background: #333;
 }
+
+
+/* WhatsApp Contact Form Overlay CSS */
+#whatsappFormOverlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 9999;
+  backdrop-filter: blur(7px);
+}
+
+.whatsapp-form-overlay-bg {
+  position: relative;
+  width: 100%; 
+  /* height: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Override the base floating widget styles when used as the WhatsApp overlay
+   The base .widget-wrapper places the widget near the bottom center; when
+   used as an overlay we want a full-screen centered container instead. */
+/* .widget-wrapper.whatsapp-form-overlay-bg {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000; 
+  transform: none !important;
+} */
+
+/* Make the WhatsApp widget box a comfortable, centered panel (not the tiny floating widget) */
+/* #whatsappWidgetBox {
+  width: 100%;
+  max-width: 480px;
+  margin: 16px;
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+} */
+
+/* overlay show/hide states for smooth transition */
+#whatsappFormOverlay.show {
+  display: block;
+  animation: overlayFadeIn 300ms ease;
+}
+
+#whatsappFormOverlay.hide {
+  animation: overlayFadeOut 300ms ease forwards;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes overlayFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.whatsapp-form {
+  padding: 2rem 2.5rem;
+
+}
+
+/* make widget-box transitions apply in the overlay too (renamed to -2) */
+#whatsappWidgetBox-2 {
+  transform: scale(0);
+  transform-origin: center;
+  transition: transform 320ms ease-in-out, opacity 240ms ease-in-out;
+  opacity: 0;
+}
+
+/* reveal when JS adds the show-2 class */
+#whatsappWidgetBox-2.show-2 {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.whatsapp-form h3 {
+  margin-bottom: 1.4rem;
+  text-align: center;
+}
+
+.whatsapp-form label {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* .whatsapp-form input,
+.whatsapp-form textarea {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  font-size: 1rem;
+} */
+
+.whatsapp-form textarea {
+  margin-bottom: 1rem;
+  resize: vertical;
+}
+
+.whatsapp-submit {
+  width: 100%;
+  /* background: #25d366; */
+  /* color: #fff; */
+  border: none;
+  padding: 0.7rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.whatsapp-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.whatsapp-close:hover {
+  color: #000;
+}
+
+/* floating close button style positioned on top-left of the widget */
+.close-top {
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  background: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border: none;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.close-top:focus { outline: none; }
+
+/* Widget */
+.widget-wrapper-2 {
+  position: fixed;
+  /* bottom: 20px; */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9998;
+  transition: all 0.4s ease-in-out;
+  width: 30%;
+  height: 100%;
+}
+
+.widget-wrapper-2.expand-2 {
+  bottom: 80px;
+  width: 90%;
+  max-width: 700px;
+}
+
+.widget-toggle-2 {
+  background-color: #ffffff54;
+  backdrop-filter: blur(10px);
+  color: #161616f3;
+  border-radius: 1.5rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.274);
+  transition: opacity 0.3s ease;
+}
+
+/* white glow applied once after first scroll to highlight the toggle */
+.widget-toggle-2.glow-2 {
+  box-shadow: 0 0 8px 6px rgba(255, 255, 255, 0.637), 0 6px 18px rgba(0, 0, 0, 0.18) !important;
+  transition: box-shadow .35s ease-in-out;
+}
+
+.widget-wrapper-2.expand-2 .widget-toggle-2 {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.widget-toggle-2 i {
+  color: #000000;
+  padding: 15px;
+  border-radius: 30%;
+  transition: transform 0.3s ease;
+}
+
+.widget-wrapper-2.expand-2 .widget-toggle-2 i {
+  transform: rotate(90deg);
+}
+
+.widget-box-2 {
+  background-color: #ffffff54;
+  backdrop-filter: blur(10px);
+  color: #000000;
+  border-radius: 24px;
+  padding: 2rem;
+  z-index: 9998;
+  transform: scale(0);
+  transform-origin: bottom center;
+  transition: transform 0.4s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.129);
+}
+
+.widget-box-2.show-2 {
+  transform: scale(1);
+}
+
+.widget-box-2.hide-2 {
+  display: none !important;
+}
+
+.widget-box-2 h5 {
+  font-weight: 100;
+  font-size: 1.7rem;
+}
+
+.option-btn-2 {
+  background: transparent;
+  border: none;
+  color: #000000;
+  text-align: left;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+}
+
+.option-btn-2.active,
+.option-btn-2:hover {
+  color: rgb(255, 255, 255);
+}
+
+.nav-controls-2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.circle-btn-2,
+.continue-btn-2 {
+  background-color: #ffffff1e;
+  backdrop-filter: blur(10px);
+  color: #000000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Hide the continue button on the first selection step (step2). We still keep the element present for ARIA and JS
+       but visually hide it so selection immediately proceeds to step3 when a main option is clicked. */
+#step2-2 .continue-btn-2 {
+  display: none !important;
+}
+
+.circle-btn-2 {
+  padding: 0.8rem;
+}
+
+.form-control-2 {
+  background-color: #ffffff1e;
+  backdrop-filter: blur(10px);
+  border: 0.5px solid #33333338;
+  color: white;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.form-control-2::placeholder {
+  color: #000000;
+}
+
+.hide-2 {
+  display: none;
+}
+
+/* When WhatsApp overlay is open, hide the original floating widget to avoid conflicts */
+body.whatsapp-open .widget-wrapper,
+body.whatsapp-open .widget-box {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Ensure the renamed widget box has reveal styles */
+.widget-box-2 {
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 320ms ease-in-out, opacity 240ms ease-in-out;
+}
+.widget-box-2.show-2 {
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+
+@media (max-width: 1200px) {
+  .widget-wrapper-2{
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .widget-wrapper-2{
+    width: 70%;
+  }
+}
+
+@media (max-width:567px){
+  .widget-wrapper-2{
+    width: 80%;
+  }
+}
+
+@media (max-width: 468px){
+  .widget-wrapper-2{
+    width: 93%;
+  }
+}
