@@ -342,12 +342,52 @@ html {
 .header-icons i{
   font-size: 1rem;
 }
+.selection-summary {
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  padding: .7rem .5rem;
+  align-items: flex-start !important;
 
+}
+.sel-sep{
+  display: none;
+}
+.selection-summary .sel-service {
+    color: #181818;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    width: 100%;
+
+}
+.selection-summary .sel-main{
+  width: 100%;
+}
+.widget-box {
+  padding: 1rem;
+}
+.form-control{
+  margin-bottom: .3rem;
+  font-size: .8rem;
+  padding: .5rem;
+}
+.widget-step h5{
+  font-size: 1.2rem;
+}
+.circle-btn, .continue-btn {
+  padding: .5rem 1rem;
+  font-size: .8rem;
+}
+#image-carousel{
+  padding-top: 3rem !important;
+  height: 500px !important;
+}
 }
 
 @media (max-width: 768px) {
   .bg-banner {
-    background: url('../images/Tab002.png') no-repeat center center/cover;
+    background: url('../images/Tab-Banner.png') no-repeat center center/cover;
     
   }
   .section-navbar {
@@ -409,6 +449,7 @@ html {
   margin-bottom: 1.5rem;
   /* padding: 0 1rem; */
   color: #777777;
+  word-break: keep-all;
 }
 
 /* Marquee wrapper with fade edges */
@@ -542,7 +583,8 @@ html {
 
 @media (max-width: 383px) {
   .headline {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
   }
 }
 
@@ -1326,6 +1368,12 @@ body {
   padding: 6rem 1.5rem 4rem;
   display: block;
 }
+.contact-row{
+  flex-direction: row;
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+}
 
 /* Large faint background title: use responsive sizing */
 .contact-title {
@@ -1519,11 +1567,14 @@ body {
 
   .contact-title {
     font-size: clamp(2rem, 28vw, 5rem);
-    top: 0.5rem;
+    top: 0.2rem;
   }
 
   .contact-form textarea {
     min-height: 120px;
+  }
+  .contact-row{
+    gap: .7rem;
   }
 
   .divide {
