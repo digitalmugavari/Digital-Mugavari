@@ -2,11 +2,12 @@
 
 @font-face {
   font-family: 'Ppmori';
-  src: url('fonts/Ppmori.woff2') format('woff2'),
-    url('fonts/Ppmori.woff') format('woff'),
-    url('fonts/Ppmori.ttf') format('truetype');
+  src: url('../fonts/Ppmori.woff2') format('woff2'),
+    url('../fonts/Ppmori.woff') format('woff'),
+    url('../fonts/Ppmori.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 
@@ -1666,19 +1667,24 @@ body {
 }
 
 
- .work-title.char-reveal {
-            white-space: pre-wrap;
-            /* preserve line breaks and spacing */
-            display: inline-block;
-            /* allow per-character inline-block spans to animate */
-        }
+.work-title.char-reveal {
+  display: inline-block;
+  /* keep full words intact on narrow viewports */
+  word-break: keep-all;
+  overflow-wrap: normal;
+  hyphens: manual;
+}
 
-        .work-title.char-reveal span {
-            opacity: 0.18;
-            /* initial faded state */
-            display: inline-block;
-            will-change: opacity, color, transform;
-        }
+.work-title.char-reveal .word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.work-title.char-reveal .char {
+  opacity: 0.18;
+  display: inline-block;
+  will-change: opacity, color, transform;
+}
 
 
 
