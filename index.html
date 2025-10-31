@@ -43,9 +43,9 @@ drive real results for your business.">
     <!-- preloader -->
     <div class="preloader-overlay">
         <div class="final-message" id="finalMessage">
-            <div class="final-line first">It’s not just a business.</div>
+            <div class="final-line first">It's not just a business.</div>
             <div class="final-line middle">Digital Mugavari</div>
-            <div class="final-line last">It’s your identity, your presence, your place.</div>
+            <div class="final-line last">It's your identity, your presence, your place.</div>
         </div>
     </div>
     <!-- header section -->
@@ -75,8 +75,8 @@ drive real results for your business.">
                 <div>
                     <h1 class="headline">
                         From Strategy <br>
-                        to <span>SEO</span>, We’re Your <br>
-                        Brand’s Loudest Voice.</h1>
+                        to <span>SEO</span>, We're Your <br>
+                        Brand's Loudest Voice.</h1>
                 </div>
             </div>
         </section>
@@ -87,7 +87,7 @@ drive real results for your business.">
         <div class="container work-content text-center">
             <h2 class="work-title text-wrap char-reveal">
                 Your brand deserves more than recognition, it deserves real, lasting growth. At Digital Mugavari, we
-                don’t just follow trends, we set them. Whether you’re building, scaling, or reinventing, we make your
+                don't just follow trends, we set them. Whether you're building, scaling, or reinventing, we make your
                 brand unstoppable.
             </h2>
             <br><br>
@@ -269,7 +269,7 @@ drive real results for your business.">
                 <div class="widget-step" id="step2">
                     <h5>I need help with...</h5>
                     <div id="mainOptions" class="mt-3">
-                        <button class="option-btn" data-value="seo">SEO to boost my website’s visibility</button>
+                        <button class="option-btn" data-value="seo">SEO to boost my website's visibility</button>
                         <button class="option-btn" data-value="web">Designing or redesigning my website</button>
                         <button class="option-btn" data-value="smm">Managing my social media platforms</button>
                         <button class="option-btn" data-value="pm">Running ads that drive real results</button>
@@ -444,13 +444,160 @@ drive real results for your business.">
         <div class="magic-overlay">
             <p class="pre-text">It's not just a name.</p>
             <h1 class="magic-word">Mugavari</h1>
-            <p class="post-text">It’s your identity, your presence, your place.</p>
+            <p class="post-text">It's your identity, your presence, your place.</p>
         </div>
     </section>
 
+
+    <!-- WhatsApp Popup Form -->
+    <div id="whatsappFormOverlay" style="display:none;">
+        <div class="widget-wrapper-2 whatsapp-form-overlay-bg">
+            <div class="widget-box-2" id="whatsappWidgetBox-2" role="dialog" aria-modal="true">
+                <div class="widget-step-2" id="whatsappStep">
+                    <h5>Speak with an Expert</h5>
+                    <form id="whatsappForm" class="whatsapp-form">
+                        <input type="text" class="form-control-2" name="name" placeholder="Name" required />
+                        <input type="tel" class="form-control-2" name="phone" placeholder="Phone number" required />
+                        <input type="email" class="form-control-2" name="email" placeholder="Email address" required />
+                        <textarea class="form-control-2" name="message" rows="3" placeholder="Message" required></textarea>
+                        <div class="nav-controls-2">
+                            <button type="submit" class="continue-btn-2 whatsapp-submit">Send via WhatsApp</button>
+                        </div>
+                    </form>
+                    <!-- floating close button positioned on top of the widget -->
+                    <button class="circle-btn-2 close-top" id="closeWhatsappForm" aria-label="Close">&times;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        $("#gform").submit((e) => {
+    // Show the form after 5 seconds when page loaded with transition
+    (function() {
+        const overlay = document.getElementById('whatsappFormOverlay');
+        const widgetBox = document.getElementById('whatsappWidgetBox-2');
+        const closeBtn = document.getElementById('closeWhatsappForm');
+        const form = document.getElementById('whatsappForm');
+
+        function openOverlay() {
+            if (!overlay) return;
+            overlay.classList.remove('hide');
+            overlay.classList.add('show');
+            // reset any inline transform/opacity (in case of previous shrink animation)
+            if (widgetBox) {
+                widgetBox.style.transition = '';
+                widgetBox.style.transform = '';
+                widgetBox.style.opacity = '';
+            }
+            // show inner widget box after a tick to trigger scale animation
+            try { document.body.classList.add('whatsapp-open'); } catch(e) {}
+            setTimeout(() => { if (widgetBox) widgetBox.classList.add('show-2'); }, 20);
+        }
+
+        function closeOverlay() {
+            if (!overlay) return;
+            // hide box first
+            if (widgetBox) widgetBox.classList.remove('show-2');
+            // then fade overlay
+            overlay.classList.remove('show');
+            overlay.classList.add('hide');
+            // restore floating widget visibility
+            try { document.body.classList.remove('whatsapp-open'); } catch(e) {}
+            // after animation, remove inline display
+            setTimeout(() => { overlay.classList.remove('hide'); overlay.style.display = 'none'; }, 320);
+        }
+
+        // window.addEventListener('load', function() {
+        //     setTimeout(function() {
+        //         if (overlay) { overlay.style.display = 'flex'; openOverlay(); }
+        //     }, 10000);
+        // });
+
+        const trigger = document.getElementById('whatsappTrigger');
+
+        // open via header icon
+        if (trigger) {
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (overlay) { overlay.style.display = 'flex'; openOverlay(); }
+            });
+        }
+
+        // close button
+        if (closeBtn) closeBtn.addEventListener('click', function() {
+            // animate shrink toward trigger if trigger exists
+            if (trigger && widgetBox) {
+                try {
+                    const iconRect = trigger.getBoundingClientRect();
+                    const boxRect = widgetBox.getBoundingClientRect();
+                    const dx = iconRect.left + iconRect.width/2 - (boxRect.left + boxRect.width/2);
+                    const dy = iconRect.top + iconRect.height/2 - (boxRect.top + boxRect.height/2);
+                    widgetBox.style.transition = 'transform 380ms ease, opacity 300ms ease';
+                    widgetBox.style.transform = `translate(${dx}px, ${dy}px) scale(0.08)`;
+                    widgetBox.style.opacity = '0';
+                } catch(e) {}
+                setTimeout(closeOverlay, 380);
+            } else {
+                closeOverlay();
+            }
+        });
+
+        // click outside the widget-box to close
+        if (overlay) {
+            overlay.addEventListener('click', function(e) {
+                // if clicked directly on overlay (outside widget-box)
+                if (e.target === overlay) {
+                    // same shrinking animation when clicking outside
+                    if (trigger && widgetBox) {
+                        try {
+                            const iconRect = trigger.getBoundingClientRect();
+                            const boxRect = widgetBox.getBoundingClientRect();
+                            const dx = iconRect.left + iconRect.width/2 - (boxRect.left + boxRect.width/2);
+                            const dy = iconRect.top + iconRect.height/2 - (boxRect.top + boxRect.height/2);
+                            widgetBox.style.transition = 'transform 380ms ease, opacity 300ms ease';
+                            widgetBox.style.transform = `translate(${dx}px, ${dy}px) scale(0.08)`;
+                            widgetBox.style.opacity = '0';
+                        } catch(e) {}
+                        setTimeout(closeOverlay, 380);
+                    } else {
+                        closeOverlay();
+                    }
+                }
+            });
+        }
+
+        // WhatsApp submission logic
+        if (form) form.addEventListener('submit', function(e) {
             e.preventDefault();
+            var name = this.name.value.trim();
+            var phone = this.phone.value.trim();
+            var email = this.email.value.trim();
+            var message = this.message.value.trim();
+            // Format the WhatsApp message
+            var text = encodeURIComponent(
+                "Requesting a Call Back:\n" +
+                "Name: " + name + "\n" +
+                "Phone: " + phone + "\n" +
+                "Email: " + email + "\n" +
+                "Message: " + message
+            );
+                // CHANGE THIS PHONE NUMBER to your WhatsApp recipient (country code + number, no + or spaces)
+                var whatsappNumber = "918807838134";
+                // Use the more compatible API endpoint which works on web and mobile
+                var waUrl = "https://api.whatsapp.com/send?phone=" + whatsappNumber + "&text=" + text;
+                try {
+                    // Try to open in a new tab/window. If popup is blocked, fallback to navigating current tab.
+                    var newWin = window.open(waUrl, "_blank", "noopener,noreferrer");
+                    if (!newWin) {
+                        // Popup blocked — navigate current tab so the message still appears
+                        // window.location.href = waUrl;
+                    } else {
+                        try { newWin.focus(); } catch (e) {}
+                    }
+                } catch (e) {
+                    // As a last resort, navigate the current tab
+                    window.location.href = waUrl;
+                }
 
             // Populate hidden fields with the widget selections (exposed by scriptstyle.js)
             try {
@@ -528,6 +675,4 @@ drive real results for your business.">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </body>
-
-
 </html>
