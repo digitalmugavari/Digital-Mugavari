@@ -1,17 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-@font-face {
-  font-family: 'Ppmori';
-  src: url('fonts/Ppmori.woff2') format('woff2'),
-    url('fonts/Ppmori.woff') format('woff'),
-    url('fonts/Ppmori.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-
 body {
-  font-family: 'Ppmori', Arial, sans-serif;
+  font-family: 'Poppins', 'Heebo', Arial, sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -304,7 +294,7 @@ header {
   margin-bottom: 1.5rem;
   width: 100%;
   padding: 0.75rem;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .form-control::placeholder {
@@ -459,7 +449,6 @@ header {
   margin-bottom: 1.5rem;
   /* padding: 0 1rem; */
   color: #777777;
-  word-break: keep-all;
 }
 
 /* Marquee wrapper with fade edges */
@@ -1677,19 +1666,24 @@ body {
 }
 
 
- .work-title.char-reveal {
-            white-space: pre-wrap;
-            /* preserve line breaks and spacing */
-            display: inline-block;
-            /* allow per-character inline-block spans to animate */
-        }
+.work-title.char-reveal {
+  display: inline-block;
+  /* keep full words intact on narrow viewports */
+  word-break: keep-all;
+  overflow-wrap: normal;
+  hyphens: manual;
+}
 
-        .work-title.char-reveal span {
-            opacity: 0.18;
-            /* initial faded state */
-            display: inline-block;
-            will-change: opacity, color, transform;
-        }
+.work-title.char-reveal .word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.work-title.char-reveal .char {
+  opacity: 0.18;
+  display: inline-block;
+  will-change: opacity, color, transform;
+}
 
 
 

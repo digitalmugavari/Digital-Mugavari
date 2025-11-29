@@ -297,6 +297,9 @@ window.addEventListener("scroll", () => {
 
 document.addEventListener("DOMContentLoaded", function () {
   const target = document.querySelector("#image-left");
+  if (!target) {
+    return;
+  }
 
   const observer = new IntersectionObserver(
     ([entry]) => {
@@ -404,20 +407,39 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!el) return;
 
             // preserve original text and split into characters, keeping whitespace
-            const text = el.textContent.trim();
-            el.textContent = '';
+      const text = el.textContent.trim();
+      el.textContent = '';
 
-            const chars = Array.from(text);
-            chars.forEach(ch => {
-                const span = document.createElement('span');
-                span.textContent = ch === ' ' ? '\u00A0' : ch;
-                el.appendChild(span);
-            });
+      const fragment = document.createDocumentFragment();
+      const segments = text.split(/(\s+)/);
+
+      segments.forEach(segment => {
+        if (!segment) return;
+
+        if (/^\s+$/.test(segment)) {
+          fragment.appendChild(document.createTextNode(segment));
+          return;
+        }
+
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'word';
+
+        Array.from(segment).forEach(ch => {
+          const charSpan = document.createElement('span');
+          charSpan.className = 'char';
+          charSpan.textContent = ch;
+          wordSpan.appendChild(charSpan);
+        });
+
+        fragment.appendChild(wordSpan);
+      });
+
+      el.appendChild(fragment);
 
             // animate: fade up the characters as the section scrolls into view
             gsap.registerPlugin(ScrollTrigger);
             // smoother character reveal: animate from a small y-offset + faded opacity to final state
-            gsap.fromTo('.work-title.char-reveal span',
+      gsap.fromTo('.work-title.char-reveal .char',
                 { opacity: 0.18, y: 12 },
                 {
                     opacity: 1,
