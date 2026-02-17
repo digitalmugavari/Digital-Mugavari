@@ -1,0 +1,72 @@
+/* TEAM */
+
+Company: Digital Mugavari
+Website: https://digitalmugavari.com
+Location: Pondicherry, India
+Contact: digitalmugavari@gmail.com
+Phone: +91 88078 38134
+
+/* SITE */
+
+Last update: 2026/02/17
+Standards: HTML5, CSS3, JavaScript ES6+
+Components: Bootstrap 5, GSAP, jQuery
+Software: Visual Studio Code
+Language: English
+Doctype: HTML5
+IDE: Visual Studio Code
+
+/* SERVICES */
+
+Website Development:
+    - Responsive Design
+    - WordPress Development
+    - E-commerce Solutions
+    - UI/UX Design
+
+Digital Marketing:
+    - PPC Campaigns
+    - Performance Marketing
+    - Content Marketing
+    - Social Media Management
+
+SEO Optimization:
+    - On-Page SEO
+    - Local SEO
+    - Off-Page SEO
+    - Technical SEO
+
+Branding:
+    - Brand Identity
+    - Logo Design
+    - Brand Awareness
+
+Influencer Marketing:
+    - Brand Collaborations
+    - Social Media Influencer Campaigns
+
+Graphic Design:
+    - Poster Design
+    - Banner Design
+    - Creative Visual Content
+
+/* THANKS */
+
+Thanks to all the open-source contributors and the web development community
+for making the web a better place.
+
+Special thanks to:
+    - Bootstrap Team
+    - GSAP (GreenSock Animation Platform)
+    - jQuery Team
+    - Google Fonts
+    - Icons8 for icons
+
+/* TAGLINE */
+
+"From Strategy to SEO, We're Your Brand's Loudest Voice."
+"Clicks. Leads. Conversions."
+
+It's not just a business.
+Digital Mugavari
+It's your identity, your presence, your place.

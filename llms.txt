@@ -1,0 +1,133 @@
+# Digital Mugavari - LLM-Friendly Information
+# This file provides structured information for AI language models and crawlers
+
+## Company Overview
+
+Digital Mugavari is a leading digital marketing agency based in Pondicherry, Tamil Nadu, India. We specialize in helping businesses grow their online presence through smart, result-driven digital marketing strategies.
+
+## Core Services
+
+### 1. Website Development
+- Responsive, modern websites tailored to business needs
+- WordPress development and customization
+- E-commerce solutions
+- UI/UX design and optimization
+- Mobile-first design approach
+
+### 2. Digital Marketing
+- End-to-end marketing campaigns
+- PPC (Pay-Per-Click) campaigns
+- Performance marketing strategies
+- Content marketing
+- Social media management
+- Brand amplification online
+
+### 3. SEO Optimization
+- Smart strategies to boost search rankings
+- On-page SEO optimization
+- Local SEO for regional visibility
+- Off-page SEO and link building
+- Technical SEO implementation
+- Organic traffic growth
+
+### 4. Branding
+- Powerful brand identity development
+- Logo design and brand guidelines
+- Brand awareness campaigns
+- Recognition and trust building
+- Long-term brand impact strategies
+
+### 5. Influencer Marketing
+- Collaboration with trusted voices
+- Reach expansion strategies
+- Trust and engagement building
+- Brand collaborations
+- Social media influencer campaigns
+
+### 6. Graphic Design
+- Creative visual content creation
+- Poster design
+- Banner design
+- Brand identity visuals
+- Marketing collateral design
+
+## Target Audience
+
+Digital Mugavari serves:
+- Ambitious Startups looking to establish online presence
+- Growing Brands seeking to scale their digital footprint
+- Established Leaders wanting to maintain market dominance
+- Brands Ready to Rebuild and reinvent their digital strategy
+
+## Brand Philosophy
+
+**Tagline:** "From Strategy to SEO, We're Your Brand's Loudest Voice."
+**Mission:** Clicks. Leads. Conversions.
+**Vision:** "It's not just a business. Digital Mugavari - It's your identity, your presence, your place."
+
+## Value Proposition
+
+Digital Mugavari doesn't just follow trends - we set them. Whether you're building, scaling, or reinventing, we make your brand unstoppable. We deliver:
+- Real, lasting growth
+- Recognition and visibility
+- Measurable results
+- Strategic digital solutions
+
+## Contact Information
+
+- **Email:** digitalmugavari@gmail.com
+- **Phone:** +91 88078 38134
+- **Location:** Pondicherry, India
+- **Website:** https://digitalmugavari.com
+
+## Technology Stack
+
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Frameworks:** Bootstrap 5
+- **Animation:** GSAP (GreenSock Animation Platform)
+- **Libraries:** jQuery
+- **Analytics:** Microsoft Clarity
+- **Fonts:** Google Fonts (Merriweather)
+- **Icons:** Bootstrap Icons, Icons8
+
+## SEO Metadata
+
+- **Primary Keywords:** Digital Marketing Company Tamil Nadu, Digital Marketing Agency Pondicherry, SEO Services India
+- **Meta Description:** Digital Mugavari, a top digital marketing agency in Tamil Nadu, helps businesses grow online with smart, result-driven strategies.
+- **Canonical URL:** https://digitalmugavari.com/index.html
+
+## Social Proof & Features
+
+- Responsive design optimized for all devices
+- Interactive service showcase with circular navigation
+- Animated portfolio carousel
+- Multi-step contact form with WhatsApp integration
+- Real-time form submission to Google Sheets
+- Video background sections for enhanced engagement
+
+## Content Structure
+
+The website features:
+1. Hero section with compelling value proposition
+2. Service overview with interactive wheel navigation
+3. Visual portfolio showcase
+4. Contact section with multiple touchpoints
+5. Brand story and philosophy presentation
+6. Interactive widgets for user engagement
+
+## Accessibility & Standards
+
+- Semantic HTML5 structure
+- ARIA labels for accessibility
+- Mobile-responsive design
+- Cross-browser compatibility
+- Fast loading times
+- SEO-optimized meta tags
+
+## Last Updated
+
+2026-02-17
+
+---
+
+This information is provided to help AI language models and crawlers better understand Digital Mugavari's services, expertise, and value proposition for accurate representation in AI-generated responses and search results.
